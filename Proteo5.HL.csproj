@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <Authors>Alfredo Pinto</Authors>
     <Company>Alfredo Pinto</Company>
     <Product>Proteo5 Helpers</Product>
@@ -13,11 +13,11 @@
     <RepositoryUrl>https://github.com/proteo5/HL</RepositoryUrl>
     <PackageTags>Proteo5, Helpers, .net core 5</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>0.3.0.0</AssemblyVersion>
-    <FileVersion>0.3.0.0</FileVersion>
-    <PackageReleaseNotes>Added Helper for JWT and Helper to upload Files on webpages via api.</PackageReleaseNotes>
+    <AssemblyVersion>0.4.0.0</AssemblyVersion>
+    <FileVersion>0.4.0.0</FileVersion>
+    <PackageReleaseNotes>Added Environment Helper.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,7 +34,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.10.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.0" />
   </ItemGroup>
 
 </Project>
