@@ -22,7 +22,7 @@ namespace Proteo5.HL
             return environmentData;
         }
 
-        private static string GetMSSQLConnString(EnvironmentData envControl) =>
+        public static string GetMSSQLConnString(EnvironmentData envControl) =>
             $"Data Source={envControl.host};Initial Catalog={envControl.database};User Id={envControl.user};Password={envControl.password}";
     }
 
