@@ -45,20 +45,33 @@ namespace Proteo5.HL
 
         public static Result<dynamic> GetToken(string user, string name, string surname, string email, string key)
         {
+            //This function is implemented to support same interface to versions previous to 0.6.0
+            //To preserve same behavior, this function will generate tokens that last 7 days.
+            return GetToken(user, name, surname, email, new string[0], DateTime.UtcNow.AddDays(7), key);
+        }
+
+        public static Result<dynamic> GetToken(string user, string name, string surname, string email, string[] roles, DateTime? Expiration, string key)
+        {
             var HMACKey = key;
             SecurityKey _issuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(HMACKey));
             var tokenHandler = new JwtSecurityTokenHandler();
 
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
+            var claims = new List<Claim>(){
                     new Claim(ClaimTypes.Email, email),
                     new Claim(ClaimTypes.Name, name),
                     new Claim(ClaimTypes.Surname, surname),
                     new Claim(ClaimTypes.NameIdentifier, user)
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                };
+
+            for (int i = 0; i < roles.Length; i++)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, roles[i]));
+            }
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims.ToArray()),
+                Expires = Expiration.HasValue ? Expiration.Value : DateTime.UtcNow.AddYears(10),
                 SigningCredentials = new SigningCredentials(_issuerSigningKey, SecurityAlgorithms.HmacSha256Signature)
             };
 
