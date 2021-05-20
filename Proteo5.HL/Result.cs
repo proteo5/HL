@@ -23,6 +23,21 @@ namespace Proteo5.HL
         public string Message { get; set; }
         public ValidatorResults ValidationResults { get; set; }
         public Exception Exception { get; set; }
+
+        public Result<object> GetResult
+        {
+            get
+            {
+                return new()
+                {
+                    State = this.State,
+                    Message = this.Message,
+                    ValidationResults = this.ValidationResults,
+                    Exception = this.Exception,
+                    Data = null
+                };
+            }
+        }
     }
 
     public class Result<T> : Result
@@ -40,6 +55,20 @@ namespace Proteo5.HL
         }
 
         public T Data { get; set; }
+
+        public new Result GetResult
+        {
+            get
+            {
+                return new()
+                {
+                    State = this.State,
+                    Message = this.Message,
+                    ValidationResults = this.ValidationResults,
+                    Exception = this.Exception
+                };
+            }
+        }
     }
 
     public class ResultsStates

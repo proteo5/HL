@@ -59,9 +59,9 @@ namespace Proteo5.HL.Validators
 
     public class ValidatorResult
     {
-        public bool IsValid;
-        public string Message;
-        public string ItemName;
+        public bool IsValid { get; set; }
+        public string Message { get; set; }
+        public string ItemName { get; set; }
     }
 
     public class ValidatorResults
