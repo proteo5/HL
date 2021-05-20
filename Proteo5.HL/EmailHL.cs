@@ -76,7 +76,7 @@ namespace Proteo5.HL
             }
             catch (Exception ex)
             {
-                return new Result(ResultsStates.error) { Message = ex.Message, Exception = ex };
+                return new Result(ResultsStates.error) { Message = ex.Message };
             }
         }
 
