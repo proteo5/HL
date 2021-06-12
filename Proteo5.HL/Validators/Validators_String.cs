@@ -101,9 +101,9 @@ namespace Proteo5.HL.Validators
         {
             bool IsValid;
 
-            var required = str.Required(itemName, NotValidMessage);
-            if (!required.IsValid)
-                return required;
+            if (str == null) str = "";
+            if (string.IsNullOrEmpty(str))
+                return new ValidatorResult() { IsValid = true, ItemName = itemName, Message = "" };
 
             try
             {
